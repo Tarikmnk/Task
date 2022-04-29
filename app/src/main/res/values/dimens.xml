@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="appMargin">10dp</dimen>
+    <dimen name="title_size">18sp</dimen>
+    <dimen name="normal_size">16sp</dimen>
+    <dimen name="small_size">14sp</dimen>
+    <dimen name="x_small_size">12sp</dimen>
+
+</resources>

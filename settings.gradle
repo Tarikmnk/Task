@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "task"
 include ':app'
+include ':network'
