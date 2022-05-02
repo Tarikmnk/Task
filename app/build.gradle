@@ -103,6 +103,13 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     implementation 'com.google.android.material:material:1.7.0-alpha01'
 
+    //Room
+    implementation("androidx.room:room-runtime:$rootProject.room_version")
+    implementation("androidx.room:room-ktx:$rootProject.room_version")
+    annotationProcessor("androidx.room:room-compiler:$rootProject.room_version")
+    kapt("androidx.room:room-compiler:$rootProject.room_version")
+    implementation("androidx.room:room-paging:$rootProject.room_version")
+
     // TEST
     testImplementation "junit:junit:4.13.2"
     testImplementation "com.google.dagger:hilt-android-testing:2.40.5"

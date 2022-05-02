@@ -10,7 +10,8 @@ import com.example.task.utils.createBetDialog
 /**
  * Created by Tarik MANKAOGLU on 30.04.2022.
  */
-class MatchesAdapter : BaseRecyclerAdapter<MainUiModel, RowMatchBinding>(diffCallback()) {
+class MatchesAdapter(val callBack: (model: MainUiModel) -> Unit) :
+    BaseRecyclerAdapter<MainUiModel, RowMatchBinding>(diffCallback()) {
 
     companion object {
         fun diffCallback() = object :
@@ -49,6 +50,7 @@ class MatchesAdapter : BaseRecyclerAdapter<MainUiModel, RowMatchBinding>(diffCal
                 currentData.prediction1 = prediction1
                 currentData.prediction2 = prediction2
                 this.notifyItemChanged(position)
+                callBack.invoke(currentData)
             }
         }
     }

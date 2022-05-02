@@ -3,19 +3,26 @@ package com.example.task.ui.result
 import android.content.Context
 import android.content.Intent
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.example.network.model.MatchModel
+import com.example.network.model.MatchResultModel
 import com.example.task.R
 import com.example.task.base.BaseActivity
 import com.example.task.databinding.ActivityResultBinding
 import com.example.task.ui.main.model.MainUiModel
+import com.example.task.ui.result.model.ResultUiModel
+import com.example.task.utils.sharedHelper.SharedHelper
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ResultActivity : BaseActivity<ResultViewModel, ActivityResultBinding>() {
 
     companion object {
-        const val MODEL = "MODEL"
-        fun create(context: Context, model: List<MainUiModel>): Intent {
-            return Intent(context, ResultActivity::class.java).putExtra(MODEL, ArrayList(model))
+        const val TAG = "ResultActivity"
+        fun create(context: Context): Intent {
+            return Intent(context, ResultActivity::class.java)
         }
     }
 
@@ -31,7 +38,19 @@ class ResultActivity : BaseActivity<ResultViewModel, ActivityResultBinding>() {
 
     override fun observers() {
         viewModel.resultLiveData.observe(this) { res ->
-            viewModel.adapter.submitList(res)
+            lifecycleScope.launch {
+                viewModel.getPredictionFlow().collectLatest { collect ->
+                    viewModel.adapter.submitList(res.map { entity ->
+                        val prediction =
+                            collect?.firstOrNull { it.team1 == entity.team1 && it.team2 == entity.team2 }
+                        ResultUiModel(
+                            match = entity,
+                            prediction1 = prediction?.prediction1,
+                            prediction2 = prediction?.prediction2
+                        )
+                    })
+                }
+            }
         }
     }
 
@@ -39,8 +58,8 @@ class ResultActivity : BaseActivity<ResultViewModel, ActivityResultBinding>() {
         binding.tbResult.setOnMenuItemClickListener {
 
             when (it.itemId) {
-                R.id.btnResult -> {
-
+                R.id.btnRestart -> {
+                    restart()
                 }
             }
             return@setOnMenuItemClickListener true
@@ -49,5 +68,15 @@ class ResultActivity : BaseActivity<ResultViewModel, ActivityResultBinding>() {
 
     private fun setAdapter() {
         binding.rvResult.adapter = viewModel.adapter
+    }
+
+    private fun restart() {
+        viewModel.localStorage.putString(SharedHelper.keyLastScreenTag, "")
+        viewModel.dbRepository.clearPrediction()
+        finish()
+    }
+
+    override fun onBackPressed() {
+        restart()
     }
 }
