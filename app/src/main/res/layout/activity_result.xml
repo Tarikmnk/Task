@@ -2,29 +2,29 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.main.MainActivity">
+    tools:context=".ui.result.ResultActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/tbMain"
+            android:id="@+id/tbResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/primary200"
             app:layout_constraintTop_toTopOf="parent"
-            app:menu="@menu/menu_toolbar_main" />
+            app:menu="@menu/menu_toolbar_result" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMatches"
+            android:id="@+id/rvResult"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            tools:listitem="@layout/row_match"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tbMain" />
+            app:layout_constraintTop_toBottomOf="@+id/tbResult"
+            tools:listitem="@layout/row_result" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

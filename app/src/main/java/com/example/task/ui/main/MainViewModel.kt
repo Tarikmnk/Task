@@ -28,7 +28,7 @@ class MainViewModel @Inject constructor(val apiRepository: IApiRepository) : Bas
         getMatches()
     }
 
-    fun getMatches() {
+    private fun getMatches() {
         viewModelScope.launch {
             when (val response = apiRepository.getMatches()) {
                 is ResultCheck.Success -> {

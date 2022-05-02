@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Task">
         <activity
+            android:name=".ui.result.ResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>

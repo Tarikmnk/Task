@@ -6,6 +6,11 @@
     <string name="okay">Okay</string>
     <string name="calculate">Calculate</string>
     <string name="get_results">Get results</string>
+    <string name="restart">Restart</string>
     <string name="bet">Bet</string>
     <string name="enter">Enter</string>
+
+    <!-- warnings -->
+    <string name="warning_at_least_one_bet">You must bet at least one match to get results.</string>
+
 </resources>
