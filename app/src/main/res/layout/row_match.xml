@@ -18,7 +18,7 @@
         android:layout_marginVertical="4dp"
         android:clickable="true"
         android:focusable="true"
-        app:cardCornerRadius="14dp"
+        app:cardCornerRadius="@dimen/app_radius"
         app:cardElevation="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,7 +61,9 @@
                 android:id="@+id/btnBet"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Bet"
+                android:text="@string/bet"
+                android:background="@drawable/button_background"
+                android:backgroundTint="@color/primary500"
                 app:layout_constraintBottom_toTopOf="@+id/tvBet"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineTeam2"
                 app:layout_constraintStart_toEndOf="@+id/guidelineTeam1"

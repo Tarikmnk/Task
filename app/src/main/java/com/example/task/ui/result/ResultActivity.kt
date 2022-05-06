@@ -65,6 +65,10 @@ class ResultActivity : BaseActivity<ResultViewModel, ActivityResultBinding>() {
             }
             return@setOnMenuItemClickListener true
         }
+        binding.tbResult.setNavigationOnClickListener {
+            restart()
+            finish()
+        }
     }
 
     private fun setAdapter() {

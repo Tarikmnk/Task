@@ -12,8 +12,10 @@
             android:id="@+id/tbMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/primary200"
+            android:backgroundTint="@color/primary500"
+            android:background="@drawable/toolbar_background"
             app:layout_constraintTop_toTopOf="parent"
+            android:theme="@style/toolbar"
             app:menu="@menu/menu_toolbar_main" />
 
         <androidx.recyclerview.widget.RecyclerView

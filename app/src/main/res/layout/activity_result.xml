@@ -12,7 +12,10 @@
             android:id="@+id/tbResult"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/primary200"
+            android:backgroundTint="@color/primary500"
+            android:background="@drawable/toolbar_background"
+            android:theme="@style/toolbar"
+            app:navigationIcon="@drawable/ic_back"
             app:layout_constraintTop_toTopOf="parent"
             app:menu="@menu/menu_toolbar_result" />
 

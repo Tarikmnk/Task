@@ -6,14 +6,14 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="@dimen/appMargin">
+        app:cardCornerRadius="@dimen/app_radius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/containerDialog"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/screen_background2"
-            android:paddingBottom="20dp"
+            android:padding="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,8 +23,6 @@
                 android:id="@+id/tvWarningDialog"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/appMargin"
-                android:layout_marginTop="40dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -38,8 +36,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="4dp"
-                android:background="@color/primary500"
+                android:background="@drawable/button_background"
+                android:backgroundTint="@color/primary500"
                 android:text="@string/okay"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
