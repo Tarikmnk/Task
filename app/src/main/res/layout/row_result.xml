@@ -58,7 +58,7 @@
                 tools:text="Real Madrid" />
 
             <Button
-                android:id="@+id/btnBet"
+                android:id="@+id/btnBetResult"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:clickable="false"
@@ -83,7 +83,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/guidelineTeam2"
                 app:layout_constraintStart_toEndOf="@+id/guidelineTeam1"
-                app:layout_constraintTop_toBottomOf="@+id/btnBet"
+                app:layout_constraintTop_toBottomOf="@+id/btnBetResult"
                 tools:text="1 : 0" />
 
             <androidx.constraintlayout.widget.Guideline

@@ -22,7 +22,7 @@ import javax.inject.Inject
  */
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val apiRepository: IApiRepository,
+    var apiRepository: IApiRepository,
     val dbRepository: IDBRepository,
     var localStorage: LocalStorage,
 ) : BaseViewModel() {
@@ -53,7 +53,7 @@ class MainViewModel @Inject constructor(
 
     fun getData() {
         dbRepository.getPrediction()?.let {
-            if (it.addedCurrentMill + (1000 * 5) > System.currentTimeMillis()) {
+            if (it.addedCurrentMill + (1000 * 60) > System.currentTimeMillis()) {
                 return
             }
         }

@@ -60,6 +60,7 @@ class ResultActivity : BaseActivity<ResultViewModel, ActivityResultBinding>() {
             when (it.itemId) {
                 R.id.btnRestart -> {
                     restart()
+                    finish()
                 }
             }
             return@setOnMenuItemClickListener true
@@ -73,10 +74,10 @@ class ResultActivity : BaseActivity<ResultViewModel, ActivityResultBinding>() {
     private fun restart() {
         viewModel.localStorage.putString(SharedHelper.keyLastScreenTag, "")
         viewModel.dbRepository.clearPrediction()
-        finish()
     }
 
     override fun onBackPressed() {
         restart()
+        super.onBackPressed()
     }
 }
