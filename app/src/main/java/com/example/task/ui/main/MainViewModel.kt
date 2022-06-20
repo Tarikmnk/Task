@@ -2,6 +2,7 @@ package com.example.task.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import com.example.network.ResultCheck
 import com.example.network.model.MatchResponse
@@ -14,6 +15,9 @@ import com.example.task.ui.main.model.MainUiModel
 import com.example.task.utils.sharedHelper.LocalStorage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

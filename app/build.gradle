@@ -36,6 +36,8 @@ android {
 
     buildFeatures {
         dataBinding true
+        // Enables Jetpack Compose for this module
+        compose true
     }
 
     kapt {
@@ -68,6 +70,10 @@ android {
         unitTests {
             includeAndroidResources = true
         }
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.1.1'
     }
 }
 
@@ -111,6 +117,19 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$rootProject.room_version")
     kapt("androidx.room:room-compiler:$rootProject.room_version")
     implementation("androidx.room:room-paging:$rootProject.room_version")
+
+    //Compose
+    // Integration with activities
+    implementation 'androidx.activity:activity-compose:1.4.0'
+    // Compose Material Design
+    implementation 'androidx.compose.material:material:1.1.1'
+    // Animations
+    implementation 'androidx.compose.animation:animation:1.1.1'
+    // Tooling support (Previews, etc.)
+    implementation 'androidx.compose.ui:ui-tooling:1.1.1'
+    // Integration with ViewModels
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1'
+    implementation("androidx.compose.runtime:runtime-livedata:1.1.1")
 
     // TEST
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:2.40.5"
