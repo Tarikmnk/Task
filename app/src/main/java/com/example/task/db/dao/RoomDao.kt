@@ -28,7 +28,7 @@ interface RoomDao {
     fun getPrediction(): PredictionEntity?
 
     @Query("select * from PredictionTable")
-    fun getPredictionFlow(): Flow<List<PredictionEntity>?>
+    fun getPredictionFlow(): Flow<List<PredictionEntity>>
 
     @Query("select * from PredictionTable where :team1 == team1 and :team2 = team2")
     fun getPredictionWithPaging(team1: String, team2: String): PagingSource<Int, PredictionEntity>

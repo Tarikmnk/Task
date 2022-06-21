@@ -20,7 +20,6 @@ abstract class BaseComposeActivity<VM : BaseViewModel> : ComponentActivity() {
 
     //Abstract
     abstract val viewModel: VM
-    abstract val layoutRes: Int
     abstract fun onCreated()
     //abstract fun observers()
 
@@ -28,8 +27,7 @@ abstract class BaseComposeActivity<VM : BaseViewModel> : ComponentActivity() {
         super.onCreate(savedInstanceState)
         onCreated()
         //observers()
-        /*setContentView(layoutRes)
-
+        /*
         binding = DataBindingUtil.setContentView(this, layoutRes)
         binding.lifecycleOwner = this
 
@@ -41,17 +39,17 @@ abstract class BaseComposeActivity<VM : BaseViewModel> : ComponentActivity() {
     }
 
     private fun observe() {
-        viewModel.errorLiveData.observe(this, { error ->
+        viewModel.errorLiveData.observe(this) { error ->
             createWarningDialog(
                 {
                     if (error.isFinishActivity)
                         finish()
                 }, error.message
             )
-        })
+        }
         viewModel.eventShowOrHideProgress.observe(
-            this,
-            { showOrHideProgress(it) })
+            this
+        ) { showOrHideProgress(it) }
     }
 
     private fun showOrHideProgress(

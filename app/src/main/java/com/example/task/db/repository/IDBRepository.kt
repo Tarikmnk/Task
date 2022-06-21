@@ -10,6 +10,6 @@ interface IDBRepository {
     fun addOrUpdatePrediction(entity: PredictionEntity)
     fun getPrediction(team1: String, team2: String): PredictionEntity?
     fun getPrediction(): PredictionEntity?
-    fun getPredictionFlow(): Flow<List<PredictionEntity>?>
+    fun getPredictionFlow(): Flow<List<PredictionEntity>>
     fun clearPrediction()
 }

@@ -15,5 +15,5 @@ data class PredictionEntity(
     var team2: String = "",
     var prediction1: Int? = null,
     var prediction2: Int? = null,
-    var addedCurrentMill: Long
+    var addedCurrentMill: Long = 0
 ) : BaseModel()
