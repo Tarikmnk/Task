@@ -3,6 +3,7 @@ package com.example.task.ui.main.compose
 import android.content.Context
 import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.*
+import com.example.network.NetworkError
 import com.example.network.ResultCheck
 import com.example.network.model.MatchModel
 import com.example.network.model.MatchResponse
@@ -11,6 +12,7 @@ import com.example.task.base.BaseViewModel
 import com.example.task.db.entity.PredictionEntity
 import com.example.task.db.repository.IDBRepository
 import com.example.task.ui.adapter.MatchesAdapter
+import com.example.task.ui.customComponent.compose.match.MatchUiModel
 import com.example.task.ui.main.model.MainUiModel
 import com.example.task.utils.createBetDialog
 import com.example.task.utils.sharedHelper.LocalStorage
@@ -34,7 +36,10 @@ class MainScreenViewModel @Inject constructor(
     val matchLiveData: StateFlow<MatchResponse> get() = _matchLiveData
 
     val getStateUi = getPredictionFlow()
-        .catch { }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(1000), listOf())
+        .catch { catch ->
+            catch.localizedMessage
+            errorLiveData.value = NetworkError(catch.localizedMessage ?: "", 404, false)
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(1000), listOf())
 
     init {
         getData()
@@ -66,7 +71,7 @@ class MainScreenViewModel @Inject constructor(
         return dbRepository.getPredictionFlow()
     }
 
-    fun addPrediction(context: Context, item: MainUiModel) {
+    fun addPrediction(context: Context, item: MatchUiModel) {
         context.createBetDialog(
             team1 = item.match.team1,
             team2 = item.match.team2,

@@ -16,6 +16,9 @@
             android:name=".ui.result.ResultActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.result.compose.ResultScreen"
+            android:exported="false" />
+        <activity
             android:name=".ui.main.compose.MainScreen"
             android:exported="true">
             <intent-filter>

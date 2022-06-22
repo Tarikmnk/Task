@@ -32,6 +32,10 @@ class DBRepository @Inject constructor(private val dao: RoomDao) : IDBRepository
         return dao.getPredictionFlow()
     }
 
+    override fun getAllPrediction(): List<PredictionEntity> {
+        return dao.getAllPrediction()
+    }
+
     override fun clearPrediction() {
         dao.clearPredictionTable()
     }
